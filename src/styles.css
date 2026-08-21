@@ -228,17 +228,18 @@ button:focus-visible {
 .legend-anchor { background: var(--anchor); border-radius: 50%; }
 
 .matrix-container {
-  height: min(59vh, 34rem);
-  overflow: auto;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  overflow: visible;
   border: 1px solid var(--line);
   border-radius: .5rem;
   background: #0e100e;
-  overscroll-behavior: contain;
-  scrollbar-color: #41463f #11130f;
 }
 
 .matrix {
-  width: max-content;
+  width: 100%;
+  table-layout: fixed;
   border-collapse: separate;
   border-spacing: 0;
   font-variant-numeric: tabular-nums;
@@ -246,14 +247,16 @@ button:focus-visible {
 
 .matrix th,
 .matrix td {
-  width: 4.35rem;
-  min-width: 4.35rem;
-  height: 3.7rem;
-  padding: .3rem;
+  width: auto;
+  min-width: 0;
+  height: clamp(1.85rem, 8vw, 3.4rem);
+  padding: clamp(.05rem, .45vw, .25rem);
   border-right: 1px solid #252824;
   border-bottom: 1px solid #252824;
   text-align: center;
 }
+
+.matrix th:first-child { width: 10.5%; }
 
 .matrix thead th {
   position: sticky;
@@ -261,7 +264,7 @@ button:focus-visible {
   top: 0;
   color: #d8dbd4;
   background: #1b1e1a;
-  font-size: .75rem;
+  font-size: clamp(.43rem, 1.85vw, .75rem);
 }
 
 .matrix tbody th,
@@ -271,16 +274,21 @@ button:focus-visible {
   left: 0;
   color: #d8dbd4;
   background: #1b1e1a;
-  font-size: .74rem;
+  font-size: clamp(.43rem, 1.85vw, .74rem);
 }
 
-.matrix .matrix-corner { z-index: 4; color: var(--muted); font-size: .62rem; letter-spacing: .09em; }
+.matrix .matrix-corner {
+  z-index: 4;
+  color: var(--muted);
+  font-size: clamp(.38rem, 1.55vw, .62rem);
+  letter-spacing: .04em;
+}
 
 .matrix td {
   position: relative;
   color: #737a71;
   background: #10120f;
-  font-size: .95rem;
+  font-size: clamp(.58rem, 2.35vw, .95rem);
   font-weight: 600;
 }
 
@@ -295,15 +303,15 @@ button:focus-visible {
   color: #fff;
   background: rgba(255,184,102,.17);
   box-shadow: inset 0 0 0 2px var(--anchor);
-  font-size: 1.05rem;
+  font-size: clamp(.62rem, 2.55vw, 1.05rem);
 }
 
 .matrix td.anchor-cell i {
   position: absolute;
-  top: .34rem;
-  right: .34rem;
-  width: .38rem;
-  height: .38rem;
+  top: clamp(.12rem, .7vw, .34rem);
+  right: clamp(.12rem, .7vw, .34rem);
+  width: clamp(.22rem, 1vw, .38rem);
+  height: clamp(.22rem, 1vw, .38rem);
   border-radius: 50%;
   background: var(--anchor);
   box-shadow: 0 0 0 2px rgba(255,184,102,.15);
