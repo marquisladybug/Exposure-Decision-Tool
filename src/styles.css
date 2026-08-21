@@ -79,6 +79,13 @@ button:focus-visible {
   letter-spacing: .18em;
 }
 
+.ev100-sub {
+  position: relative;
+  top: .12em;
+  font-size: .7em;
+  line-height: 1;
+}
+
 .scene-readout h1 {
   margin: .55rem auto .3rem;
   font-size: clamp(1.3rem, 6vw, 2.15rem);

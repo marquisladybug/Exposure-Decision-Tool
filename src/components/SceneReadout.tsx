@@ -9,7 +9,7 @@ export function SceneReadout({ scene }: { scene: Scene }) {
     <header className="scene-readout">
       <p className="eyebrow">SELECTED SCENE</p>
       <h1>{scene.displayName}</h1>
-      <div className="ev-readout"><span>EV100</span> {scene.ev100}</div>
+      <div className="ev-readout"><span>EV<sub className="ev100-sub">100</sub></span> {scene.ev100}</div>
       <div className="anchor-readout">
         <div className="anchor-title">
           {scene.mnemonic ? `${scene.mnemonic} · ` : 'ANCHOR · '}ISO {scene.anchor.iso}

@@ -18,7 +18,7 @@ export function StudyMatrix({ scene, isoId, onIsoChange }: Props) {
         <div className="study-heading-row">
           <div className="section-label">EXPOSURE MATRIX</div>
           <div className="legend">
-            <span><i className="legend-line" />EV100 {scene.ev100}</span>
+            <span><i className="legend-line" />EV<sub className="ev100-sub">100</sub> {scene.ev100}</span>
             <span><i className="legend-anchor" />ANCHOR</span>
           </div>
         </div>

@@ -18,7 +18,7 @@ export function SceneSelector({ scenes, selectedId, onSelect }: Props) {
             onClick={() => onSelect(scene)}
             aria-pressed={scene.id === selectedId}
           >
-            <span>{scene.name}</span><span>EV100 {scene.ev100}</span>
+            <span>{scene.name}</span><span>EV<sub className="ev100-sub">100</sub> {scene.ev100}</span>
           </button>
         ))}
       </div>
