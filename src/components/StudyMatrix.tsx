@@ -18,7 +18,7 @@ export function StudyMatrix({ scene, isoId, onIsoChange }: Props) {
         <div className="study-heading-row">
           <div className="section-label">EXPOSURE MATRIX</div>
           <div className="legend">
-            <span><i className="legend-line" />EV {scene.ev100}</span>
+            <span><i className="legend-line" />EV100 {scene.ev100}</span>
             <span><i className="legend-anchor" />ANCHOR</span>
           </div>
         </div>
@@ -37,13 +37,13 @@ export function StudyMatrix({ scene, isoId, onIsoChange }: Props) {
               <tr key={shutter.id}>
                 <th scope="row">{shutter.label}</th>
                 {APERTURES.map((aperture) => {
-                  const ev = exposureValue(aperture.value, shutter.value, iso.value)
-                  const isLine = ev === scene.ev100
+                  const cellEv100 = exposureValue(aperture.value, shutter.value, iso.value)
+                  const isSceneEvLine = cellEv100 === scene.ev100
                   const isAnchor = aperture.id === scene.anchor.apertureId && shutter.id === scene.anchor.shutterId
-                  const className = [isLine && 'ev-line', isAnchor && 'anchor-cell'].filter(Boolean).join(' ')
+                  const className = [isSceneEvLine && 'ev-line', isAnchor && 'anchor-cell'].filter(Boolean).join(' ')
                   return (
                     <td key={aperture.id} className={className}>
-                      <span>{ev}</span>{isAnchor && <i aria-label="Scene anchor" />}
+                      <span>{cellEv100}</span>{isAnchor && <i aria-label="Scene anchor" />}
                     </td>
                   )
                 })}
