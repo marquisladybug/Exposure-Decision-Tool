@@ -12,6 +12,7 @@ export default function App() {
   const [scene, setScene] = useState<Scene>(SCENES[0])
   const [apertureId, setApertureId] = useState(scene.anchor.apertureId)
   const [shutterId, setShutterId] = useState(scene.anchor.shutterId)
+  const [studyIsoId, setStudyIsoId] = useState('400')
 
   const selectScene = (next: Scene) => {
     setScene(next)
@@ -40,7 +41,13 @@ export default function App() {
           onApertureChange={setApertureId}
           onShutterChange={setShutterId}
         />
-      ) : <StudyMatrix scene={scene} />}
+      ) : (
+        <StudyMatrix
+          scene={scene}
+          isoId={studyIsoId}
+          onIsoChange={setStudyIsoId}
+        />
+      )}
     </main>
   )
 }

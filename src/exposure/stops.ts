@@ -59,3 +59,9 @@ export function findShutter(id: string) {
   if (!stop) throw new Error(`Unknown shutter: ${id}`)
   return stop
 }
+
+export function findIso(id: string) {
+  const stop = ISO_STOPS.find((item) => item.id === id)
+  if (!stop) throw new Error(`Unknown ISO: ${id}`)
+  return stop
+}

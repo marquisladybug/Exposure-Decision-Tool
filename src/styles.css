@@ -212,14 +212,58 @@ button:focus-visible {
 .study-view { border-top: 1px solid var(--line); padding-top: 1.35rem; }
 
 .study-heading {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1rem;
   padding: 0 .2rem .9rem;
 }
 
-.study-iso { margin-top: .25rem; font-size: 1.25rem; font-weight: 730; }
+.study-heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.study-iso-picker { margin-top: .75rem; }
+
+.study-iso-label {
+  color: var(--muted);
+  font-size: .62rem;
+  font-weight: 750;
+  letter-spacing: .16em;
+}
+
+.study-iso-track {
+  display: flex;
+  gap: .38rem;
+  margin: .38rem -.2rem 0;
+  padding: .1rem .2rem .18rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.study-iso-track::-webkit-scrollbar { display: none; }
+
+.study-iso-stop {
+  flex: 0 0 auto;
+  min-width: 3.25rem;
+  min-height: 2.15rem;
+  padding: .38rem .55rem;
+  border: 1px solid var(--line);
+  border-radius: .35rem;
+  color: #a4aaa1;
+  background: #10120f;
+  font-size: .72rem;
+  font-weight: 680;
+  font-variant-numeric: tabular-nums;
+  scroll-snap-align: center;
+}
+
+.study-iso-stop.selected {
+  border-color: var(--accent);
+  color: #0b0c09;
+  background: var(--accent);
+  box-shadow: 0 0 0 2px rgba(228,255,114,.12);
+}
 
 .legend { display: flex; gap: .75rem; color: var(--muted); font-size: .62rem; font-weight: 700; letter-spacing: .08em; }
 .legend span { display: inline-flex; align-items: center; gap: .3rem; }

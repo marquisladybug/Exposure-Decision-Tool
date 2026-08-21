@@ -1,21 +1,28 @@
 import type { Scene } from '../data/scenes'
 import { exposureValue } from '../exposure/model'
-import { APERTURES, SHUTTERS } from '../exposure/stops'
+import { APERTURES, findIso, SHUTTERS } from '../exposure/stops'
+import { StudyIsoSelector } from './StudyIsoSelector'
 
-const ISO_400_SV = 2
+type Props = {
+  scene: Scene
+  isoId: string
+  onIsoChange: (id: string) => void
+}
 
-export function StudyMatrix({ scene }: { scene: Scene }) {
+export function StudyMatrix({ scene, isoId, onIsoChange }: Props) {
+  const iso = findIso(isoId)
+
   return (
     <section className="study-view">
       <div className="study-heading">
-        <div>
+        <div className="study-heading-row">
           <div className="section-label">EXPOSURE MATRIX</div>
-          <div className="study-iso">ISO 400</div>
+          <div className="legend">
+            <span><i className="legend-line" />EV {scene.ev100}</span>
+            <span><i className="legend-anchor" />ANCHOR</span>
+          </div>
         </div>
-        <div className="legend">
-          <span><i className="legend-line" />EV {scene.ev100}</span>
-          <span><i className="legend-anchor" />ANCHOR</span>
-        </div>
+        <StudyIsoSelector selectedId={isoId} onSelect={onIsoChange} />
       </div>
       <div className="matrix-container">
         <table className="matrix">
@@ -30,7 +37,7 @@ export function StudyMatrix({ scene }: { scene: Scene }) {
               <tr key={shutter.id}>
                 <th scope="row">{shutter.label}</th>
                 {APERTURES.map((aperture) => {
-                  const ev = exposureValue(aperture.value, shutter.value, ISO_400_SV)
+                  const ev = exposureValue(aperture.value, shutter.value, iso.value)
                   const isLine = ev === scene.ev100
                   const isAnchor = aperture.id === scene.anchor.apertureId && shutter.id === scene.anchor.shutterId
                   const className = [isLine && 'ev-line', isAnchor && 'anchor-cell'].filter(Boolean).join(' ')
